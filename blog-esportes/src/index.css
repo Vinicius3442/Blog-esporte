@@ -1,0 +1,471 @@
+/* --- VARIÁVEIS DE COR --- */
+:root {
+  --bg-dark: #121212;
+  --bg-card: #1e1e1e;
+  --text-light: #f3f4f6;
+  --text-muted: #9ca3af;
+  --green-flat: #22c55e;
+  --green-hover: #16a34a;
+  --danger: #ef4444;
+  --border-color: #333333;
+}
+
+/* --- RESET BÁSICO --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--green-flat);
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+a:hover {
+  color: var(--green-hover);
+}
+
+/* --- LAYOUT PRINCIPAL --- */
+#root > div {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+header h1 {
+  font-size: 1.8rem;
+  color: var(--text-light);
+}
+
+/* --- BOTÕES --- */
+button, header a, .btn {
+  background-color: var(--green-flat);
+  color: #121212;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+  display: inline-block;
+}
+
+button:hover, header a:hover, .btn:hover {
+  background-color: var(--green-hover);
+  color: #121212;
+}
+
+button:disabled {
+  background-color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+button[onClick*="handleDelete"] {
+  background-color: transparent;
+  color: var(--danger);
+  border: 1px solid var(--danger);
+}
+
+button[onClick*="handleDelete"]:hover {
+  background-color: var(--danger);
+  color: #fff;
+}
+
+/* --- GRID E CARDS (HOME) --- */
+main > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: var(--bg-card);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-color);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card > div {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card span {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--green-flat);
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.card h2 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.card p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.card a {
+  margin-top: auto;
+  align-self: flex-start;
+  border: 1px solid var(--green-flat);
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.card a:hover {
+  background-color: var(--green-flat);
+  color: #121212;
+}
+
+/* --- FORMULÁRIOS (CRIAR/EDITAR) --- */
+form {
+  background-color: var(--bg-card);
+  padding: 30px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+form div {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: var(--text-muted);
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  font-size: 1rem;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--green-flat);
+}
+
+form button[type="submit"] {
+  width: 100%;
+  font-size: 1.1rem;
+  padding: 15px;
+}
+
+/* --- TELA DE DETALHES DA MATÉRIA --- */
+article span {
+  color: var(--green-flat);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+article h1 {
+  font-size: 2.5rem;
+  margin: 10px 0;
+  line-height: 1.2;
+}
+
+article > p {
+  color: var(--text-muted);
+  margin-bottom: 30px;
+}
+
+article img {
+  border-radius: 8px;
+  margin-bottom: 30px;
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+}
+
+/* --- COMENTÁRIOS --- */
+section form {
+  padding: 20px;
+  margin: 0 0 30px 0;
+  max-width: 100%;
+}
+
+section > div > div {
+  background-color: var(--bg-card);
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border: 1px solid var(--border-color);
+}
+
+section strong {
+  color: var(--green-flat);
+}
+
+section span {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  article h1 {
+    font-size: 2rem;
+  }
+}
+/* --- COMPONENTES DA HOME ESCALADA --- */
+
+.header-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.search-bar {
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-card);
+  color: var(--text-light);
+  width: 250px;
+}
+
+.categories-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.cat-btn {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-weight: normal;
+}
+
+.cat-btn:hover {
+  border-color: var(--green-flat);
+  background-color: transparent;
+  color: var(--text-light);
+}
+
+.cat-btn.active {
+  background-color: var(--green-flat);
+  color: #121212;
+  border-color: var(--green-flat);
+  font-weight: bold;
+}
+
+/* --- HERO SECTION (DESTAQUE) --- */
+.hero {
+  display: flex;
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  margin-bottom: 40px;
+  min-height: 350px;
+}
+
+.hero-img {
+  width: 55%;
+  object-fit: cover;
+}
+
+.hero-img.placeholder {
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+}
+
+.hero-content {
+  width: 45%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero .badge {
+  color: var(--green-flat);
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.hero h2 {
+  font-size: 2.2rem;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+.hero-meta {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.hero-excerpt {
+  color: var(--text-light);
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.hero .btn {
+  align-self: flex-start;
+}
+
+/* Ajustes na grid e cards para ficar mais suave */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  border-color: #444;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+  }
+  .hero-img, .hero-content {
+    width: 100%;
+  }
+  .header-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .search-bar {
+    width: 100%;
+  }
+}
+/* --- GLASSMORPHISM NO HEADER --- */
+.glass-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(18, 18, 18, 0.75); /* Fundo semi-transparente */
+  backdrop-filter: blur(12px); /* Efeito de vidro fosco */
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 30px;
+  padding: 15px 0;
+}
+
+.header-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-container h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+/* Ajuste do main para compensar o header fora do container original */
+.main-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px 50px 20px;
+}
+
+/* --- ANIMAÇÕES DE ENTRADA (FADE-IN) --- */
+.fade-in {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- SKELETON LOADING --- */
+.skeleton-box {
+  background: #2a2a2a;
+  background: linear-gradient(90deg, #2a2a2a 25%, #333333 50%, #2a2a2a 75%);
+  background-size: 200% 100%;
+  animation: skeletonLoading 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes skeletonLoading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Ajustes para o form e article das outras páginas não quebrarem com o header fora do container */
+form, article {
+  max-width: 1100px;
+  margin: 0 auto;
+}
